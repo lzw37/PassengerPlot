@@ -1,0 +1,41 @@
+﻿<Window x:Class="PassengerPlot.Form_StopFacilityList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PassengerPlot"
+        mc:Ignorable="d"
+        Title="Form_StopFacilityList" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Search" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Facility Name</TextBlock>
+                <TextBox x:Name="tb_ID" Width="100"></TextBox>
+                <Button x:Name="btn_Search" Click="btn_Search_Click">Search</Button>
+                <Button x:Name="btn_Clear" Click="btn_Clear_Click">Clear</Button>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Set" Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btn_Visiblize" Click="btn_Visiblize_Click">All Visible</Button>
+                <Button x:Name="btn_Invisiblize" Click="btn_Invisiblize_Click">All Invisible</Button>
+            </StackPanel>
+        </GroupBox>
+
+        <DataGrid x:Name="dg_StopFacilityView" Grid.Row="2" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="Name Visibility" Binding="{Binding Entity.IsDisplayName}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Entity.Name}"/>
+                <DataGridTextColumn Header="Location" Binding="{Binding Entity.Location}"/>
+                <DataGridTextColumn Header="Linked Station" Binding="{Binding Entity.LinkedStation.Name}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
